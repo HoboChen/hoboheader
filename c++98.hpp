@@ -109,7 +109,3 @@ vector<string> StringSplitUTF8(const string & src) {
 
 };
 
-int main(){
-
-    return 0;
-}
