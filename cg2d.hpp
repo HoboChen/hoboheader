@@ -428,4 +428,5 @@ double areaPolyCirX(vector<Point> & p, Circle c) {
     ans=fabs(ans);
     return ans;
 }
+}
 #undef Vector
