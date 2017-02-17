@@ -135,4 +135,17 @@ string GetFileNameWithoutExt(const string & src) {
     return src.substr(0, pos[pos.size() - 1]);
 }
 
+string StringReplace(const string & src, const string & f, const string & t) {
+    auto pos = StringFind(src, f);
+    if (pos.size() == 0) return src;
+    string ret;
+    for (int i = 0; i < pos[0]; i++)
+        ret.push_back(src[i]);
+    for (int i = 0; i < t.size(); i++)
+        ret.push_back(t[i]);
+    for (int i = pos[0] + f.size(); i < src.size(); i++)
+        ret.push_back(src[i]);
+    return ret;
+}
+
 };
