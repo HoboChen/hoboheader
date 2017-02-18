@@ -96,13 +96,21 @@ void ContainerPrint(const _t & x, string deli = " ",
 
 // string_helper
 template<typename _t>
-inline _t StringToInt(string src)
-{
+inline _t StringToInt(string src) {
     _t x = 0;
-    for (int i = 0; i < src.size(); i++)
-    {
+    for (int i = 0; i < src.size(); i++) {
         x *= 10;
         x += src[i] - '0';
+    }
+    return x;
+}
+
+template<typename _t>
+inline _t StringToInt(char * s) {
+    _t x = 0;
+    for (int i = 0; s[i] >= '0' && s[i] <= '9'; i++) {
+        x *= 10;
+        x += s[i] - '0';
     }
     return x;
 }
