@@ -39,6 +39,20 @@ int WriteFile(const vector<string> & s, const string & fileName) {
     return 0; // todo
 }
 
+// random_helper
+// n <= r - l + 1
+vector<int> PickNInLR(int n, int l, int r) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dis(l, r);
+    unordered_set<int> tmp;
+    while (tmp.size() < n) {
+        tmp.insert(dis(gen));
+    }
+    vector<int> ret(tmp.begin(), tmp.end());
+    return ret;
+}
+
 // ----- for test -----
 /* template<typename T> */
 /* std::ostream& print(std::ostream &out, T const &val) { */ 

@@ -5,11 +5,10 @@
 using namespace std;
 using namespace hobo;
 
-vector<int> q;
 
 int main() {
-    for (int i = 0; i < 100; i++)
-        q.push_back(i);
-    ContainerPrint(ContainerShuffle(q));
+    auto a = PickNInLR(1000000, 0, 999999);
+    /* ContainerPrint(a); */
+    cout << a.size() << endl;
     return 0;
 }
