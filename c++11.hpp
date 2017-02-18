@@ -39,14 +39,42 @@ int WriteFile(const vector<string> & s, const string & fileName) {
     return 0; // todo
 }
 
+// ----- for test -----
+/* template<typename T> */
+/* std::ostream& print(std::ostream &out, T const &val) { */ 
+/*       return (out << val << " "); */
+/* } */
+
+/* template<typename T1, typename T2> */
+/* std::ostream& print(std::ostream &out, std::pair<T1, T2> const &val) { */ 
+/*       return (out << "{" << val.first << " " << val.second << "} "); */
+/* } */
+
+/* template<template<typename, typename...> class TT, typename... Args> */
+/* std::ostream& operator<<(std::ostream &out, TT<Args...> const &cont) { */
+/*       for(auto&& elem : cont) print(out, elem); */
+/*         return out; */
+/* } */
+// ----- end test -----
+
 //debug_helper
+template<typename _t>
+void AtomicContainerPrint(const _t x) {
+    cout << x;
+}
+
+template<typename _t1, typename _t2>
+void AtomicContainerPrint(const pair<_t1, _t2> x) {
+    cout << "(" << x.first << "," << x.second << ")";
+}
+
 template<typename _t>
 void ContainerPrint(const _t & x, string deli = " ",
                     bool printSize = 1, bool printNextLine = 1 ) {
     int cnt = 0;
     for (auto & t : x) {
-        if (!cnt++) cout << t;
-        else cout << deli << t;
+        if (!cnt++) { AtomicContainerPrint(t); }
+        else { cout << deli; AtomicContainerPrint(t); }
     }
     if (printSize) cout << " | size = " << cnt ;
     if (printNextLine) cout << endl;
