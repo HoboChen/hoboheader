@@ -122,7 +122,7 @@ string AnythingToString(const _t & x) {
     return t.str();
 }
 
-pair<bitset<64>, bitset<64>> Int128ToPairBitset(const __int128 x) {
+pair<bitset<64>, bitset<64>> Int128ToPairBitset(const __int128 & x) {
     static_assert(sizeof(unsigned long long) == 8, "sizeof unsigned long long too small!");
     unsigned long long ff = 18446744073709551615ULL;
     bitset<64> bret1(x & ff), bret2((x >> 64) & ff);
@@ -155,6 +155,18 @@ vector<string> StringSplit(const string & src, const string & deli) {
         ret.push_back(src.substr(deliPos[i] + 1, deliPos[i + 1] - 1 - deliPos[i]));
     }
     return ret;
+}
+
+string StringFillPrefix(const string & src, int len, char fillChar = ' ') {
+    if (src.size() >= len) return src;
+    string prefix(len - src.size(), fillChar);
+    return prefix + src;
+}
+
+string StringFillSuffix(const string & src, int len, char fillChar = ' ') {
+    if (src.size() >= len) return src;
+    string suffix(len - src.size(), fillChar);
+    return src + suffix;
 }
 
 inline bool IsUTF8CharBegin(char x) {
