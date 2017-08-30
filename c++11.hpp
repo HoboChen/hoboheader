@@ -133,6 +133,15 @@ inline _t StringToInt(char * s) {
 }
 
 template<typename _t>
+_t StringToAnything(const string & x) {
+    stringstream ss;
+    ss << x;
+    _t ret;
+    ss >> ret;
+    return ret;
+}
+
+template<typename _t>
 string AnythingToString(const _t & x) {
     ostringstream t;
     t << x;
