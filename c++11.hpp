@@ -95,6 +95,23 @@ void ContainerPrint(const _t & x, string deli = " ",
 }
 
 // string_helper
+
+string StringTrim(const string& src) {
+    auto size = src.size();
+    int l, r, i;
+    for (i = 0; i < size; i++) {
+        if (src[i] == ' ') continue;
+        else break;
+    }
+    l = i;
+    for (i = size - 1; i > 0; i--) {
+        if (src[i] == ' ') continue;
+        else break;
+    }
+    r = i;
+    return src.substr(l, r - l + 1);
+}
+
 template<typename _t>
 inline _t StringToInt(string src) {
     _t x = 0;
