@@ -318,6 +318,19 @@ inline ThreadPool::~ThreadPool()
     for(std::thread &worker: workers)
         worker.join();
 }
+
+unsigned int GetCPUCores() {  
+#if defined(WIN32)  
+    SYSTEM_INFO info;  
+    GetSystemInfo(&info);  
+    return info.dwNumberOfProcessors;  
+#elif defined(LINUX) || defined(SOLARIS) || defined(AIX)  
+    return get_nprocs();   //GNU fuction  
+#else  
+	return -1; // fetal error
+#endif  
+}  
+
 };
 
 #endif
