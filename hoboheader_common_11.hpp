@@ -52,12 +52,12 @@ vector<int> PickNInLR(int n, int l, int r) {
 
 // ----- for test -----
 /* template<typename T> */
-/* std::ostream& print(std::ostream &out, T const &val) { */ 
+/* std::ostream& print(std::ostream &out, T const &val) { */
 /*       return (out << val << " "); */
 /* } */
 
 /* template<typename T1, typename T2> */
-/* std::ostream& print(std::ostream &out, std::pair<T1, T2> const &val) { */ 
+/* std::ostream& print(std::ostream &out, std::pair<T1, T2> const &val) { */
 /*       return (out << "{" << val.first << " " << val.second << "} "); */
 /* } */
 
@@ -239,7 +239,7 @@ class ThreadPool {
 public:
     ThreadPool(size_t);
     template<class F, class... Args>
-    auto enqueue(F&& f, Args&&... args) 
+    auto enqueue(F&& f, Args&&... args)
         -> std::future<typename std::result_of<F(Args...)>::type>;
     ~ThreadPool();
 private:
@@ -247,13 +247,13 @@ private:
     std::vector< std::thread > workers;
     // the task queue
     std::queue< std::function<void()> > tasks;
-    
+
     // synchronization
     std::mutex queue_mutex;
     std::condition_variable condition;
     bool stop;
 };
- 
+
 // the constructor just launches some amount of workers
 inline ThreadPool::ThreadPool(size_t threads)
     :   stop(false)
@@ -284,7 +284,7 @@ inline ThreadPool::ThreadPool(size_t threads)
 
 // add new work item to the pool
 template<class F, class... Args>
-auto ThreadPool::enqueue(F&& f, Args&&... args) 
+auto ThreadPool::enqueue(F&& f, Args&&... args)
     -> std::future<typename std::result_of<F(Args...)>::type>
 {
     using return_type = typename std::result_of<F(Args...)>::type;
@@ -292,7 +292,7 @@ auto ThreadPool::enqueue(F&& f, Args&&... args)
     auto task = std::make_shared< std::packaged_task<return_type()> >(
             std::bind(std::forward<F>(f), std::forward<Args>(args)...)
         );
-        
+
     std::future<return_type> res = task->get_future();
     {
         std::unique_lock<std::mutex> lock(queue_mutex);
@@ -319,9 +319,9 @@ inline ThreadPool::~ThreadPool()
         worker.join();
 }
 
-unsigned int GetCPUCores() {  
+unsigned int GetCPUCores() {
     return std::thread::hardware_concurrency();
-}  
+}
 
 };
 
