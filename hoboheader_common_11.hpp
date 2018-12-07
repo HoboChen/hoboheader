@@ -1,7 +1,18 @@
 #ifndef HOBO_HEADER_11
 #define HOBO_HEADER_11
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
+#include <string>
+#include <queue>
+#include <unordered_set>
+#include <vector>
+
+#include <algorithm>
+#include <future>
+#include <random>
 
 namespace hobo {
 
