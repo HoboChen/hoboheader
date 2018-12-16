@@ -9,11 +9,15 @@
 #include <queue>
 #include <unordered_set>
 #include <vector>
+#include <bitset>
 
 #include <algorithm>
 #include <future>
+#include <functional>
 #include <random>
 
+#include <cstring>
+#include <cstdlib>
 namespace hobo {
 
 using namespace std;
